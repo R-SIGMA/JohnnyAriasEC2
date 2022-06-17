@@ -1,2 +1,2 @@
-insert into usuario(nombre,password,rol) values ('johnny','$2a$12$5oT2.pJK09TYTEtfCZOdgutUeTZG3SaXvkWmYSbSwddZ3LxNLdLZ2','ROLE_ADMIN')
-insert into usuario(nombre,password,rol) values ('prueba','$2a$12$Da3WxpSpsfJaR/MQsHvAwuaYerCuWyyBK6b5crjdRThIY9jOZUnoK','ROLE_USER')
+insert into usuario(nombre,password,rol) values ('johnny','$2a$12$5oT2.pJK09TYTEtfCZOdgutUeTZG3SaXvkWmYSbSwddZ3LxNLdLZ2','ROLE_ADMIN');
+insert into usuario(nombre,password,rol) values ('prueba','$2a$12$Da3WxpSpsfJaR/MQsHvAwuaYerCuWyyBK6b5crjdRThIY9jOZUnoK','ROLE_USER');

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -16,8 +17,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "productos")
+@JsonIgnoreProperties({"itemsBodega","itemsCliente"})
 public class Productos implements Serializable{
 	
 	private static final long serialVersionUID = 8272401950645251L;
@@ -26,9 +30,13 @@ public class Productos implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
 
+	@Column(name = "producto")
     private String producto;
+	@Column(name = "descripcion")
     private String descripcion;
+	@Column(name = "precio")
     private Double precio;
+	@Column(name = "stock")
     private Integer stock;
 
     @OneToMany(mappedBy = "producto")
