@@ -1,50 +1,27 @@
-package com.examen.EC2JohnnyArias_Bodega.model;
+package com.examen.EC2JohnnyArias_Bodega.dto;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.examen.EC2JohnnyArias_Bodega.model.Bodega;
+import com.examen.EC2JohnnyArias_Bodega.model.Cliente;
 
-@Entity
-@Table(name = "productos")
-public class Productos implements Serializable{
-	
-	private static final long serialVersionUID = 8272401950645251L;
+public class ProductosDTOResponse {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProducto;
+	private Integer idProducto;
 
     private String producto;
     private String descripcion;
     private Double precio;
     private Integer stock;
-
-    @OneToMany(mappedBy = "producto")
+    
     private List<Bodega> itemsBodega = new ArrayList<>();
     
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(name = "productos_cliente",
-			joinColumns = @JoinColumn(name="id_producto",
-					foreignKey = @ForeignKey(foreignKeyDefinition="foreign key(id_producto) references productos(id_producto)")),
-			inverseJoinColumns = @JoinColumn(name="id_cliente",
-					foreignKey = @ForeignKey(foreignKeyDefinition="foreign key(id_cliente) references cliente(id_cliente)")))
     private List<Cliente> itemsCliente = new ArrayList<>();
     
-    public Productos() {}
+    public ProductosDTOResponse() {}
 
-    public Productos(Integer idProducto, String producto, String descripcion, Double precio, Integer stock,
+    public ProductosDTOResponse(Integer idProducto, String producto, String descripcion, Double precio, Integer stock,
 			List<Bodega> itemsBodega, List<Cliente> itemsCliente) {
 		this.idProducto = idProducto;
 		this.producto = producto;
